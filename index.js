@@ -1,4 +1,4 @@
-console.log('Hello, nodeli');
+console.log('Hello, nodeli...');
 
 const ccxt = require('ccxt');
 console.log('ccxt ', ccxt);
