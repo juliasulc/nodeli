@@ -11,7 +11,8 @@ let counter = 1;
 
 const prova = async () => {
     let bitfinex_prices = await bitfinex.fetchTicker('BTC/USD');
-    console.log(`bittrex request #${counter} -> `, bitfinex_prices);
+    console.log(`----------- REQUEST NUMBER ${counter} --------------- `);
+    console.log(bitfinex_prices);
     counter++;
 };
 
