@@ -1,19 +1,24 @@
-console.log('Hello, nodeli...');
-
 const ccxt = require('ccxt');
-console.log('ccxt ', ccxt);
-
+const colors = require('colors');
 const bitfinex = new ccxt.bitfinex();
+console.log('Hello, nodeli...');
+console.log('ccxt ', ccxt);
 console.log('bitfinex ', bitfinex);
 
 let counter = 1;
-// bitfinex.proxy = 'https://cors-anywhere.herokuapp.com/';
 
 const prova = async () => {
-    let bitfinex_prices = await bitfinex.fetchTicker('BTC/USD');
-    console.log(`----------- REQUEST NUMBER ${counter} --------------- `);
-    console.log(bitfinex_prices);
+    try {
+        let bitfinex_prices = await bitfinex.fetchTicker('BTC/USD');
+        console.log(`----------- REQUEST NUMBER ${counter} ---------------`.blue);
+        console.log(new Date());
+        console.log(bitfinex_prices);
+    } catch(err) {
+        console.log(`----------- ERROR ON REQUEST NUMBER ${counter} ---------------`.red)
+        console.log(new Date());
+        console.error(err)
+    }
     counter++;
 };
 
-setInterval(prova, 3000);
+setInterval(prova, 24000);
