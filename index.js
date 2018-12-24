@@ -6,7 +6,7 @@ console.log('ccxt ', ccxt);
 const bitfinex = new ccxt.bitfinex();
 console.log('bitfinex ', bitfinex);
 
-const counter = 1;
+let counter = 1;
 // bitfinex.proxy = 'https://cors-anywhere.herokuapp.com/';
 
 const prova = async () => {
@@ -15,4 +15,4 @@ const prova = async () => {
     counter++;
 };
 
-setInterval(prova, 30000);
+setInterval(prova, 3000);
