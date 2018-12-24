@@ -11,14 +11,14 @@ const prova = async () => {
     try {
         let bitfinex_prices = await bitfinex.fetchTicker('BTC/USD');
         console.log(`----------- REQUEST NUMBER ${counter} ---------------`.blue);
-        console.log(new Date());
+        console.log(`------ ${new Date()} ------`.blue);
         console.log(bitfinex_prices);
     } catch(err) {
         console.log(`----------- ERROR ON REQUEST NUMBER ${counter} ---------------`.red)
-        console.log(new Date());
+        console.log(`------ ${new Date()} ------`.red);
         console.error(err)
     }
     counter++;
 };
 
-setInterval(prova, 24000);
+setInterval(prova, 240000);
