@@ -1,24 +1,25 @@
 const ccxt = require('ccxt');
 const colors = require('colors');
+
+const standard_input = require('./utilities/CL-interface');
+const log = require('./utilities/logger');
+
 const bitfinex = new ccxt.bitfinex();
-console.log('Hello, nodeli...');
-console.log('ccxt ', ccxt);
-console.log('bitfinex ', bitfinex);
+
+console.log('process ', process.env)
 
 let counter = 1;
 
-const prova = async () => {
+const startPolling = async () => {
     try {
         let bitfinex_prices = await bitfinex.fetchTicker('BTC/USD');
-        console.log(`----------- REQUEST NUMBER ${counter} ---------------`.blue);
-        console.log(`------ ${new Date()} ------`.blue);
-        console.log(bitfinex_prices);
+        log.info(`--> REQUEST ${counter}: `, bitfinex_prices);
+        console.info(`--> REQUEST ${counter}: `, bitfinex_prices);
     } catch(err) {
-        console.log(`----------- ERROR ON REQUEST NUMBER ${counter} ---------------`.red)
-        console.log(`------ ${new Date()} ------`.red);
-        console.error(err)
+        log.error(`--> REQUEST ${counter}: `, err);
+        console.error(`--> REQUEST ${counter}: `, err);
     }
     counter++;
 };
 
-setInterval(prova, 240000);
+setInterval(startPolling, 20000);
