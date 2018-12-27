@@ -3,8 +3,16 @@ const colors = require('colors');
 
 const standard_input = require('./utilities/CL-interface');
 const log = require('./utilities/logger');
+const EmailService = require('./utilities/EmailService');
 
 const bitfinex = new ccxt.bitfinex();
+
+const emailService = new EmailService('gmail',{
+    user: 'nodelibotli@gmail.com',
+    pass: 'nodeli2018'
+  })
+
+emailService.sendMail('last update from nodeli', 'nodeli is growing even more!');
 
 let counter = 1;
 
